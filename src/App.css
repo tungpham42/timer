@@ -1,0 +1,13 @@
+.countdown-container {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.countdown-time {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.countdown-buttons {
+  margin-top: 2rem;
+}

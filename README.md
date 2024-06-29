@@ -1,3 +1,5 @@
+# DEMO URL: [https://tungpham42.github.io/timer/](https://tungpham42.github.io/timer/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

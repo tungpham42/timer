@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faPause, faRedo } from "@fortawesome/free-solid-svg-icons";
 
 const Stopwatch = () => {
   const [time, setTime] = useState(0);
@@ -52,7 +54,7 @@ const Stopwatch = () => {
                     className="me-2"
                     onClick={() => setRunning(true)}
                   >
-                    Start
+                    <FontAwesomeIcon icon={faPlay} /> Start
                   </Button>
                 ) : (
                   <Button
@@ -61,7 +63,7 @@ const Stopwatch = () => {
                     className="me-2"
                     onClick={() => setRunning(true)}
                   >
-                    Resume
+                    <FontAwesomeIcon icon={faPlay} /> Resume
                   </Button>
                 )}
                 <Button
@@ -70,7 +72,7 @@ const Stopwatch = () => {
                   className="me-2"
                   onClick={reset}
                 >
-                  Reset
+                  <FontAwesomeIcon icon={faRedo} /> Reset
                 </Button>
               </>
             ) : (
@@ -81,10 +83,10 @@ const Stopwatch = () => {
                   className="me-2"
                   onClick={() => setRunning(false)}
                 >
-                  Pause
+                  <FontAwesomeIcon icon={faPause} /> Pause
                 </Button>
                 <Button variant="danger" size="lg" onClick={reset}>
-                  Reset
+                  <FontAwesomeIcon icon={faRedo} /> Reset
                 </Button>
               </>
             )}

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faPause, faRedo } from "@fortawesome/free-solid-svg-icons";
 
 const Countdown = () => {
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
   const [input, setInput] = useState("");
+  const [error, setError] = useState(""); // Added state for error message
 
   useEffect(() => {
     let interval;
@@ -21,7 +24,21 @@ const Countdown = () => {
   }, [running, time]);
 
   const startCountdown = () => {
+    if (!input.trim()) {
+      setError("Please enter a valid time.");
+      return;
+    }
+
+    setError(""); // Clear error message
     setTime(parseInt(input, 10));
+    setRunning(true);
+  };
+
+  const pauseCountdown = () => {
+    setRunning(false);
+  };
+
+  const resumeCountdown = () => {
     setRunning(true);
   };
 
@@ -29,6 +46,7 @@ const Countdown = () => {
     setTime(0);
     setRunning(false);
     setInput("");
+    setError(""); // Clear error message on reset
   };
 
   // Convert time in seconds to HH:MM:SS format
@@ -59,17 +77,40 @@ const Countdown = () => {
             className="my-3"
             size="lg"
           />
+          {error && <div className="text-danger mb-3">{error}</div>}{" "}
+          {/* Display error message */}
           <div className="mt-3">
-            <Button
-              variant="primary"
-              size="lg"
-              className="me-2"
-              onClick={startCountdown}
-            >
-              Start
-            </Button>
+            {!running && time === 0 ? (
+              <Button
+                variant="primary"
+                size="lg"
+                className="me-2"
+                onClick={startCountdown}
+                disabled={!input.trim()} // Disable Start button if input is empty
+              >
+                <FontAwesomeIcon icon={faPlay} /> Start
+              </Button>
+            ) : running ? (
+              <Button
+                variant="warning"
+                size="lg"
+                className="me-2"
+                onClick={pauseCountdown}
+              >
+                <FontAwesomeIcon icon={faPause} /> Pause
+              </Button>
+            ) : (
+              <Button
+                variant="success"
+                size="lg"
+                className="me-2"
+                onClick={resumeCountdown}
+              >
+                <FontAwesomeIcon icon={faPlay} /> Resume
+              </Button>
+            )}
             <Button variant="danger" size="lg" onClick={reset}>
-              Reset
+              <FontAwesomeIcon icon={faRedo} /> Reset
             </Button>
           </div>
         </Col>

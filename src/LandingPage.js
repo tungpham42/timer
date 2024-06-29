@@ -13,10 +13,22 @@ const LandingPage = () => (
       This app provides both a stopwatch and a countdown timer. Choose one to
       get started!
     </p>
-    <Button variant="primary" as={Link} to="/stop-watch" className="m-2">
+    <Button
+      variant="primary"
+      size="lg"
+      as={Link}
+      to="/stop-watch"
+      className="m-2"
+    >
       Stop Watch
     </Button>
-    <Button variant="secondary" as={Link} to="/count-down" className="m-2">
+    <Button
+      variant="secondary"
+      size="lg"
+      as={Link}
+      to="/count-down"
+      className="m-2"
+    >
       Count Down
     </Button>
   </Container>

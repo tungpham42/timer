@@ -1,5 +1,10 @@
 import React from "react";
-import { HashRouter as Router, Route, Routes, NavLink } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink,
+} from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import LandingPage from "./LandingPage";
 import Stopwatch from "./Stopwatch";
